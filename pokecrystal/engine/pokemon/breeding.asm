@@ -280,7 +280,7 @@ HatchEggs:
 	ld [hl], a
 	pop hl
 	push hl
-	ld bc, MON_STAT_EXP - 1
+	ld bc, MON_EVS - 1
 	add hl, bc
 	ld b, FALSE
 	predef CalcMonStats
@@ -754,8 +754,7 @@ EggHatch_AnimationSequence:
 	call WaitSFX
 	ld a, [wJumptableIndex]
 	ld [wCurPartySpecies], a
-	hlcoord 6, 3
-	ld d, $0
+	call PlayMonCry2
 	pop af
 	ld [wCurSpecies], a
 	ret

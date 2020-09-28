@@ -311,14 +311,10 @@ Function108201:
 
 Function108219:
 	ld [wCurPartySpecies], a
-	hlcoord 7, 2
-	ld d, $0
-	ret
+	jp PlayMonCry
 
 Function108229:
 	ld [wCurPartySpecies], a
-	hlcoord 7, 2
-	ld d, $0
 	ret
 
 MobileTradeAnim_InitSpeciesName:
@@ -416,7 +412,6 @@ WaitMobileTradeSpriteAnims:
 Function1082db:
 .loop
 	farcall PlaySpriteAnimations
-	farcall HDMATransferTilemapToWRAMBank3
 	jr nc, .loop
 	ret
 

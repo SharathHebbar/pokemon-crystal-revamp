@@ -124,7 +124,6 @@ StatsScreen_WaitAnim:
 	ret
 
 .try_anim
-	jr nc, .finish
 	ld hl, wcf64
 	res 6, [hl]
 .finish
@@ -884,8 +883,6 @@ StatsScreen_PlaceFrontpic:
 	call StatsScreen_LoadTextboxSpaceGFX
 	ld de, vTiles2 tile $00
 	predef GetAnimatedFrontpic
-	hlcoord 0, 0
-	ld d, $0
 	ld hl, wcf64
 	set 6, [hl]
 	ret
@@ -941,6 +938,8 @@ StatsScreen_GetAnimationParam:
 	jr z, .egg
 	call CheckFaintedFrzSlp
 	jr c, .FaintedFrzSlp
+	jr .Wildmon
+
 .egg
 	xor a
 	scf
@@ -1092,8 +1091,6 @@ StatsScreen_AnimateEgg:
 	ld de, vTiles2 tile $00
 	predef GetAnimatedFrontpic
 	pop de
-	hlcoord 0, 0
-	ld d, $0
 	ld hl, wcf64
 	set 6, [hl]
 	ret
